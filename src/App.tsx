@@ -1,17 +1,13 @@
 import { useState } from "react";
-import Alert from "./components/Alert";
-import Button from "./components/Button";
+import Cart from "./components/Cart";
+import NavBar from "./components/NavBar";
 
 function App() {
-  const [alertVisible, setAlertVisible] = useState(false);
+  const [cardItems, setItems] = useState(["product1", "product2"]);
   return (
     <div>
-      {alertVisible && (
-        <Alert onClose={() => setAlertVisible(false)}>My Alert</Alert>
-      )}
-      <Button color="primary" onClick={() => setAlertVisible(true)}>
-        click me
-      </Button>
+      <NavBar cartItemsCount={cardItems.length}></NavBar>
+      <Cart cartItems={cardItems} onClear={() => setItems([])} />
     </div>
   );
 }
